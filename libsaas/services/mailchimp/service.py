@@ -56,7 +56,11 @@ class Mailchimp(base.Resource):
 
     @base.apimethod
     def campaignCreate(self, type, options, content,
-                       segment_opts={}, type_opts={}):
+                       segment_opts=None, type_opts=None):
+        if segment_opts is None:
+                segment_opts = {}
+        if type_opts is None:
+                type_opts = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -84,7 +88,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def campaignSegmentTest(self, list_id, options={}):
+    def campaignSegmentTest(self, list_id, options=None):
+        if options is None:
+                options = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -92,11 +98,15 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def campaignSendTest(self, cid, test_emails=[], send_type=None):
+    def campaignSendTest(self, cid, test_emails=None, send_type=None):
+        if test_emails is None:
+                test_emails = []
         return self.method_call(locals())
 
     @base.apimethod
-    def campaignShareReport(self, cid, opts={}):
+    def campaignShareReport(self, cid, opts=None):
+        if opts is None:
+                opts = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -112,7 +122,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def campaigns(self, filters={}, start=None, limit=None):
+    def campaigns(self, filters=None, start=None, limit=None):
+        if filters is None:
+                filters = {}
         return self.method_call(locals())
 
     # XXX params order
@@ -173,7 +185,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def campaignEmailStatsAIM(self, cid, email_address=[]):
+    def campaignEmailStatsAIM(self, cid, email_address=None):
+        if email_address is None:
+                email_address = []
         return self.method_call(locals())
 
     @base.apimethod
@@ -185,7 +199,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def ecommOrderAdd(self, order={}):
+    def ecommOrderAdd(self, order=None):
+        if order is None:
+                order = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -218,11 +234,15 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def gmonkeyAdd(self, cid, id, email_address=[]):
+    def gmonkeyAdd(self, cid, id, email_address=None):
+        if email_address is None:
+                email_address = []
         return self.method_call(locals())
 
     @base.apimethod
-    def gmonkeyDel(self, cid, id, email_address=[]):
+    def gmonkeyDel(self, cid, id, email_address=None):
+        if email_address is None:
+                email_address = []
         return self.method_call(locals())
 
     @base.apimethod
@@ -230,7 +250,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def campaignsForEmail(self, email_address, options={}):
+    def campaignsForEmail(self, email_address, options=None):
+        if options is None:
+                options = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -266,13 +288,17 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def listBatchSubscribe(self, id, batch=[], double_optin=True,
+    def listBatchSubscribe(self, id, batch=None, double_optin=True,
                            update_existing=False, replace_interests=True):
+        if batch is None:
+                batch = []
         return self.method_call(locals())
 
     @base.apimethod
-    def listBatchUnsubscribe(self, id, emails=[], delete_member=False,
+    def listBatchUnsubscribe(self, id, emails=None, delete_member=False,
                            send_goodbye=True, send_notify=False):
+        if emails is None:
+                emails = []
         return self.method_call(locals())
 
     @base.apimethod
@@ -297,7 +323,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def listInterestGroupingAdd(self, id, name, type, groups=[]):
+    def listInterestGroupingAdd(self, id, name, type, groups=None):
+        if groups is None:
+                groups = []
         return self.method_call(locals())
 
     @base.apimethod
@@ -317,11 +345,15 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def listMemberActivity(self, id, email_address=[]):
+    def listMemberActivity(self, id, email_address=None):
+        if email_address is None:
+                email_address = []
         return self.method_call(locals())
 
     @base.apimethod
-    def listMemberInfo(self, id, email_address=[]):
+    def listMemberInfo(self, id, email_address=None):
+        if email_address is None:
+                email_address = []
         return self.method_call(locals())
 
     # XXX params order
@@ -331,7 +363,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def listMergeVarAdd(self, id, tag, name, options={}):
+    def listMergeVarAdd(self, id, tag, name, options=None):
+        if options is None:
+                options = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -339,7 +373,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def listMergeVarUpdate(self, id, tag, options={}):
+    def listMergeVarUpdate(self, id, tag, options=None):
+        if options is None:
+                options = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -355,11 +391,15 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def listStaticSegmentMembersAdd(self, id, seg_id, batch=[]):
+    def listStaticSegmentMembersAdd(self, id, seg_id, batch=None):
+        if batch is None:
+                batch = []
         return self.method_call(locals())
 
     @base.apimethod
-    def listStaticSegmentMembersDel(self, id, seg_id, batch=[]):
+    def listStaticSegmentMembersDel(self, id, seg_id, batch=None):
+        if batch is None:
+                batch = []
         return self.method_call(locals())
 
     @base.apimethod
@@ -371,10 +411,12 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def listSubscribe(self, id, email_address, merge_vars={},
+    def listSubscribe(self, id, email_address, merge_vars=None,
                       email_type='html', double_optin=True,
                       update_existing=False,
                       replace_interests=True, send_welcome=False):
+        if merge_vars is None:
+                merge_vars = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -383,12 +425,18 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def listUpdateMember(self, id, email_address, merge_vars={},
+    def listUpdateMember(self, id, email_address, merge_vars=None,
                          email_type=None, replace_interests=True):
+        if merge_vars is None:
+                merge_vars = {}
         return self.method_call(locals())
 
     @base.apimethod
-    def listWebhookAdd(self, id, url, actions={}, sources={}):
+    def listWebhookAdd(self, id, url, actions=None, sources=None):
+        if actions is None:
+                actions = {}
+        if sources is None:
+                sources = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -400,7 +448,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def lists(self, filters={}, start=None, limit=None):
+    def lists(self, filters=None, start=None, limit=None):
+        if filters is None:
+                filters = {}
         return self.method_call(locals())
 
     @base.apimethod
@@ -433,7 +483,9 @@ class Mailchimp(base.Resource):
         return self.method_call(locals())
 
     @base.apimethod
-    def templateUpdate(self, id, values={}):
+    def templateUpdate(self, id, values=None):
+        if values is None:
+                values = {}
         return self.method_call(locals())
 
     @base.apimethod
