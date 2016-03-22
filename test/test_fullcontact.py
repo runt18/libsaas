@@ -13,7 +13,9 @@ class FullcontactTestCase(unittest.TestCase):
 
         self.service = fullcontact.Fullcontact('my-api-key')
 
-    def expect(self, method=None, uri=None, params={}):
+    def expect(self, method=None, uri=None, params=None):
+        if params is None:
+            params = {}
         if method:
             self.assertEqual(method, self.executor.request.method)
 

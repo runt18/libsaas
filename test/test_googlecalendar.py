@@ -15,7 +15,9 @@ class GoogleCalendarTestCase(unittest.TestCase):
 
         self.service = googlecalendar.GoogleCalendar(access_token='my-access-token')
 
-    def expect(self, method=None, uri=None, params={}, headers=None):
+    def expect(self, method=None, uri=None, params=None, headers=None):
+        if params is None:
+            params = {}
         if method:
             self.assertEqual(method, self.executor.request.method)
 

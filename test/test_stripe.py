@@ -14,7 +14,9 @@ class StripeTestCase(unittest.TestCase):
 
         self.service = stripe.Stripe('my-api-key')
 
-    def expect(self, method=None, uri=None, params={}, headers=None):
+    def expect(self, method=None, uri=None, params=None, headers=None):
+        if params is None:
+            params = {}
         if method:
             self.assertEqual(method, self.executor.request.method)
 

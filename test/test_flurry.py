@@ -12,7 +12,9 @@ class FlurryTestCase(unittest.TestCase):
 
         self.service = flurry.Flurry('my-api-access-code')
 
-    def expect(self, uri, params={}):
+    def expect(self, uri, params=None):
+        if params is None:
+            params = {}
         self.assertEqual('GET', self.executor.request.method)
 
         self.assertEqual(self.executor.request.uri,

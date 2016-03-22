@@ -14,7 +14,9 @@ class TrelloTestCase(unittest.TestCase):
 
         self.service = trello.Trello('my-key','my-token')
 
-    def expect(self, method=None, uri=None, params={}):
+    def expect(self, method=None, uri=None, params=None):
+        if params is None:
+            params = {}
         if method:
             self.assertEqual(method, self.executor.request.method)
 

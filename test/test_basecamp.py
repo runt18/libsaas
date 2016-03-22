@@ -15,7 +15,9 @@ class BasecampTestCase(unittest.TestCase):
 
         self.service = basecamp.Basecamp('my-account-id','my-access-token')
 
-    def expect(self, method=None, uri=None, params={}):
+    def expect(self, method=None, uri=None, params=None):
+        if params is None:
+            params = {}
         if method:
             self.assertEqual(method, self.executor.request.method)
 
