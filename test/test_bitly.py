@@ -61,18 +61,18 @@ class BitlyTestCase(unittest.TestCase):
             method = getattr(self.service.user(), method_name)
 
             method()
-            self.expect('GET', '/user/%s' % method_name, {})
+            self.expect('GET', '/user/{0!s}'.format(method_name), {})
             method(timezone='Europe/Andorra')
-            self.expect('GET', '/user/%s' % method_name, {
+            self.expect('GET', '/user/{0!s}'.format(method_name), {
                 'timezone': 'Europe/Andorra'
             })
             method(timezone='Europe/Andorra', unit='month')
-            self.expect('GET', '/user/%s' % method_name, {
+            self.expect('GET', '/user/{0!s}'.format(method_name), {
                 'unit': 'month',
                 'timezone': 'Europe/Andorra'
             })
             method(timezone='Europe/Andorra', unit='month')
-            self.expect('GET', '/user/%s' % method_name, {
+            self.expect('GET', '/user/{0!s}'.format(method_name), {
                 'unit': 'month',
                 'timezone': 'Europe/Andorra'
             })
@@ -83,7 +83,7 @@ class BitlyTestCase(unittest.TestCase):
             method = getattr(
                     self.service.link(link='http://foo.bar'), method_name)
             method()
-            self.expect('GET', '/link/%s' % method_name, {
+            self.expect('GET', '/link/{0!s}'.format(method_name), {
                 'link': 'http://foo.bar'
             })
 
@@ -104,22 +104,22 @@ class BitlyTestCase(unittest.TestCase):
                     self.service.link(link='http://foo.bar'), method_name)
 
             method()
-            self.expect('GET', '/link/%s' % method_name, {
+            self.expect('GET', '/link/{0!s}'.format(method_name), {
                 'link': 'http://foo.bar'
             })
             method(timezone='Europe/Andorra')
-            self.expect('GET', '/link/%s' % method_name, {
+            self.expect('GET', '/link/{0!s}'.format(method_name), {
                 'link': 'http://foo.bar',
                 'timezone': 'Europe/Andorra'
             })
             method(timezone='Europe/Andorra', unit='month')
-            self.expect('GET', '/link/%s' % method_name, {
+            self.expect('GET', '/link/{0!s}'.format(method_name), {
                 'link': 'http://foo.bar',
                 'unit': 'month',
                 'timezone': 'Europe/Andorra'
             })
             method(timezone='Europe/Andorra', unit='month')
-            self.expect('GET', '/link/%s' % method_name, {
+            self.expect('GET', '/link/{0!s}'.format(method_name), {
                 'link': 'http://foo.bar',
                 'unit': 'month',
                 'timezone': 'Europe/Andorra'

@@ -49,7 +49,7 @@ class Request(object):
         self.headers = headers if headers is not None else {}
 
     def __repr__(self):
-        return "<Request [%s %s] at 0x%x>" % (self.method, self.uri,
+        return "<Request [{0!s} {1!s}] at 0x{2:x}>".format(self.method, self.uri,
                                               id(self))
 
     def __eq__(self, other):

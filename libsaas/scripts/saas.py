@@ -21,11 +21,11 @@ def extract_action(instance, parser, args):
         resource = getattr(resource, current, None)
 
         if not resource:
-            parser.error('no such resource %s' % args[0])
+            parser.error('no such resource {0!s}'.format(args[0]))
         if getattr(resource, 'is_apimethod', False):
             return resource, args[1:]
         if not isinstance(resource, collections.Callable):
-            parser.error('no such resource %s' % args[0])
+            parser.error('no such resource {0!s}'.format(args[0]))
 
         # consume one token
         args.pop(0)
@@ -77,12 +77,12 @@ def parse_args(args):
         module = __import__('libsaas.services', globals(), locals(), [service])
         module = getattr(module, service)
     except (ImportError, AttributeError):
-        parser.error('no such service %s' % service)
+        parser.error('no such service {0!s}'.format(service))
 
     members = inspect.getmembers(module, lambda obj: inspect.isclass(obj) and
                                  issubclass(obj, base.Resource))
     if not members:
-        parser.error('no such service %s' % service)
+        parser.error('no such service {0!s}'.format(service))
 
     _, klass = members[0]
 
@@ -97,7 +97,7 @@ def parse_args(args):
         optargs = {'dest': argname}
         if default is not None:
             optargs.update({'default': default})
-        parser.add_option('--%s' % argname, **optargs)
+        parser.add_option('--{0!s}'.format(argname), **optargs)
 
     options, args = parser.parse_args(args)
 
@@ -108,7 +108,7 @@ def parse_args(args):
                                 [module_name])
             module = getattr(module, module_name)
         except ImportError:
-            parser.error('no such executor %s' % options.executor)
+            parser.error('no such executor {0!s}'.format(options.executor))
 
         module.use()
 

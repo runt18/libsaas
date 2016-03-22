@@ -67,7 +67,7 @@ class Cases(CasesBase):
 class Case(CasesBase):
 
     def __init__(self, parent, object_id, is_external=False):
-        case_id = 'e-%s' % object_id if is_external else object_id
+        case_id = 'e-{0!s}'.format(object_id) if is_external else object_id
         super(Case, self).__init__(parent, case_id)
 
     @base.apimethod
